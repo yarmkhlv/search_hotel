@@ -102,25 +102,42 @@
 }
 
 .hotels__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.hotels__header__left {
+  display: flex;
+  align-items: center;
+}
+.hotels__header__text {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+}
+.hotels__header__arrow {
+  margin: 0 20px;
+}
+.hotels__header__date {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 400;
 }
 
-.favorites__list__item__row-1 {
-  display: flex;
-  justify-content: space-between;
+.hotels__carousel {
+  margin-bottom: 28px;
 }
-.row-1__text {
+
+.hotels__text {
+  margin-bottom: 39px;
+
   font-weight: 300;
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.408px;
 }
-.row-1__pic-container {
-  /* width: 21px;
-  height: 19px;
-  background-image: url('./../assets/heart_red.png');
-  background-repeat: no-repeat;
-  background-position: center; */
-}
-.row-1__pic {
-  fill: red;
+.hotels__text span {
+  font-weight: 500;
+  color: #41522e;
 }

@@ -1,5 +1,8 @@
+import { FavoriteCard } from '../components/favorite_card';
+import { HotelItemCard } from '../components/hotel_item_card';
+
 import '../styles/main.css';
-import heartRed from '../assets/heart_red.svg';
+import arrowRight from '../assets/arrow_right.svg';
 
 export function Main() {
   return (
@@ -65,34 +68,26 @@ export function Main() {
             </select>
           </div>
           <div className="favorites__list">
-            <div className="favorites__list__item">
-              <div className="favorites__list__item__row-1">
-                <div className="row-1__text">Moscow Marriott Grand Hotel</div>
-                <div className="row-1__pic-container">
-                  <img className="row-1__pic" src={heartRed} alt="red heart" />
-                </div>
-              </div>
-              <div className="favorites__list__item__row-2">
-                <span className="row-2_date">28 June, 2020</span>
-                <div className="row-2_strip" />
-                <span className="row-2_days">28 June, 2020</span>
-              </div>
-              <div className="favorites__list__item__row-3">
-                <div className="row-3_rating" />
-                <div className="row-3__price">
-                  <div className="row-3__price_text">Price:</div>
-                  <div className="row-3__price_value">23 924 ₽</div>
-                </div>
-              </div>
-            </div>
+            <FavoriteCard />
           </div>
         </div>
         <div className="hotels">
           <div className="hotels__header">
-            <div className="hotels__header__text">Отели</div>
-            <div className="hotels__header__arrow">{`>`}</div>
-            <div className="hotels__header__text">Москва</div>
+            <div className="hotels__header__left">
+              <div className="hotels__header__text">Отели</div>
+              <div className="hotels__header__arrow">
+                <img src={arrowRight} alt="arrow" />
+              </div>
+              <div className="hotels__header__text">Москва</div>
+            </div>
             <div className="hotels__header__date">07 июля 2020</div>
+          </div>
+          <div className="hotels__carousel" />
+          <div className="hotels__text">
+            Добавлено в Избранное: <span>3</span> отеля
+          </div>
+          <div className="hotels__list">
+            <HotelItemCard />
           </div>
         </div>
       </div>
