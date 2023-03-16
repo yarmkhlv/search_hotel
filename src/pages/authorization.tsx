@@ -8,7 +8,7 @@ export function Authorization() {
           <div className="auth">
             <div className="auth__text">Simple Hotel Check</div>
             <form className="auth__form" action="">
-              <p className="auth__form__section">
+              <div className="auth__form__section">
                 <label
                   htmlFor="my-login"
                   className="auth__form__section__label"
@@ -20,8 +20,9 @@ export function Authorization() {
                   className="auth__form__section__input"
                   type="email"
                 />
-              </p>
-              <p className="auth__form__section">
+              </div>
+
+              <div className="auth__form__section">
                 <label htmlFor="my-pass" className="auth__form__section__label">
                   Пароль
                 </label>
@@ -30,7 +31,11 @@ export function Authorization() {
                   className="auth__form__section__input"
                   type="password"
                 />
-              </p>
+              </div>
+
+              <button className="styled-btn btn-size-for-form" type="submit">
+                Войти
+              </button>
             </form>
           </div>
         </div>
