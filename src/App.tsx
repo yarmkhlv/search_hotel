@@ -6,7 +6,8 @@ import './styles/app.css';
 function App() {
   return (
     <div className="App">
-      <Authorization />
+      {/* <Authorization /> */}
+      <Main />
     </div>
   );
 }

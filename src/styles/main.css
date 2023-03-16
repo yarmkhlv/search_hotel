@@ -1,0 +1,126 @@
+.main {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #e5e5e5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px;
+}
+
+.header__text {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+.content {
+  width: 1024px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  grid-template-rows: 410px 472px;
+  column-gap: 24px;
+  grid-template-areas: 'filters hotels' 'favorites hotels';
+}
+
+.filters {
+  grid-area: filters;
+
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 24px;
+
+  box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+}
+
+.filters__section {
+}
+
+.filters__section__label {
+  display: block;
+  margin-bottom: 7px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.filters__section__input {
+  width: 296px;
+  height: 50px;
+  margin-bottom: 16px;
+  padding: 15px;
+
+  background: #ffffff;
+  border: 1px solid #c9cacc;
+  border-radius: 4px;
+
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.input-number::-webkit-inner-spin-button,
+.no-spinners::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.filters__section__btn_size {
+  padding: 15px 125px;
+}
+
+.favorites {
+  grid-area: favorites;
+  padding: 32px;
+
+  background-color: #fff;
+  box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+}
+
+.favorites__text {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 32px;
+}
+.favorites__selects {
+  margin-bottom: 32px;
+}
+.favorites__selects__item {
+  width: 89px;
+}
+
+.hotels {
+  grid-area: hotels;
+  background-color: #fff;
+  padding: 48px 32px;
+}
+
+.hotels__header {
+}
+
+.favorites__list__item__row-1 {
+  display: flex;
+  justify-content: space-between;
+}
+.row-1__text {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+}
+.row-1__pic-container {
+  /* width: 21px;
+  height: 19px;
+  background-image: url('./../assets/heart_red.png');
+  background-repeat: no-repeat;
+  background-position: center; */
+}
+.row-1__pic {
+  fill: red;
+}
