@@ -1,3 +1,4 @@
+import { SearchHotel } from '../components/search_hotel';
 import { FavoriteCard } from '../components/favorite_card';
 import { HotelItemCard } from '../components/hotel_item_card';
 
@@ -14,48 +15,7 @@ export function Main() {
         </div>
       </div>
       <div className="content">
-        <form className="filters">
-          <div className="filters__section">
-            <label className="filters__section__label" htmlFor="location">
-              Локация
-            </label>
-            <input
-              type="text"
-              className="filters__section__input"
-              id="location"
-              required
-            />
-          </div>
-          <div className="filters__section">
-            <label className="filters__section__label" htmlFor="date">
-              Дата заселения
-            </label>
-            <input
-              type="date"
-              className="filters__section__input"
-              id="date"
-              required
-            />
-          </div>
-          <div className="filters__section">
-            <label className="filters__section__label" htmlFor="days">
-              Количество дней
-            </label>
-            <input
-              defaultValue="1"
-              type="number"
-              min="0"
-              className="filters__section__input input-number required"
-              id="days"
-            />
-          </div>
-          <button
-            type="submit"
-            className="styled-btn filters__section__btn_size"
-          >
-            Найти
-          </button>
-        </form>
+        <SearchHotel />
         <div className="favorites">
           <div className="favorites__text">Избранное</div>
           <div className="favorites__selects">

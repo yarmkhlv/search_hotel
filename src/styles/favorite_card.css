@@ -1,3 +1,23 @@
+/* Hotel card*/
+.hotel-card-wrapper {
+  display: flex;
+  width: 100%;
+}
+.hotel-card-pic {
+  width: 64px;
+  height: 64px;
+  margin-right: 24px;
+
+  background-image: url('../assets/house.png'), url('../assets/ellipse.png');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center center, center center;
+}
+.rows-wrapper {
+  flex-grow: 1;
+}
+
+/* For hotel card and favorite card */
+
 .favorites__list__item {
   border-bottom: 1px solid rgba(135, 135, 135, 0.2);
 }
