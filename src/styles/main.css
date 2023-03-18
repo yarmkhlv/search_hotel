@@ -22,7 +22,7 @@
 
   display: grid;
   grid-template-columns: 360px 1fr;
-  grid-template-rows: 410px 472px;
+  grid-template-rows: auto auto;
   column-gap: 24px;
   grid-template-areas: 'filters hotels' 'favorites hotels';
 }
@@ -35,7 +35,9 @@
   box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
 }
-
+.favorites__list {
+  height: 288px;
+}
 .favorites__text {
   font-weight: 500;
   font-size: 24px;
@@ -84,7 +86,7 @@
 }
 
 .hotels__text {
-  margin-bottom: 39px;
+  margin-bottom: 20px;
 
   font-weight: 300;
   font-size: 17px;
@@ -94,4 +96,10 @@
 .hotels__text span {
   font-weight: 500;
   color: #41522e;
+}
+
+.hotels__list {
+  width: 600px;
+
+  overflow: scroll;
 }

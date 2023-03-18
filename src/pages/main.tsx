@@ -1,11 +1,24 @@
+import { useSelector } from 'react-redux';
+
 import { SearchHotel } from '../components/search_hotel';
 import { FavoriteCard } from '../components/favorite_card';
 import { HotelItemCard } from '../components/hotel_item_card';
 
+import { RootState } from '../store';
 import '../styles/main.css';
 import arrowRight from '../assets/arrow_right.svg';
+import { Hotel } from '../store/sagas';
 
 export function Main() {
+  const { hotelsList } = useSelector((store: RootState) => store);
+  const hotelsListRender = hotelsList.map((hotel: Hotel) => (
+    <HotelItemCard
+      name={hotel.hotelName}
+      priceAvg={hotel.priceAvg}
+      checkInDate={hotel.checkInDate}
+      amountOfDays={hotel.amountOfDays}
+    />
+  ));
   return (
     <div className="main">
       <div className="header">
@@ -46,9 +59,7 @@ export function Main() {
           <div className="hotels__text">
             Добавлено в Избранное: <span>3</span> отеля
           </div>
-          <div className="hotels__list">
-            <HotelItemCard />
-          </div>
+          <div className="hotels__list">{hotelsListRender}</div>
         </div>
       </div>
     </div>

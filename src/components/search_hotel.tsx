@@ -1,35 +1,28 @@
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { updateHotelsList } from '../store/hotels_list_slice';
-
+import { RootState } from '../store';
 import {
-  dateFormattedForInput,
-  dateFormattedCheckOut,
-} from '../helpers/date_now_formatted';
+  updateCheckInDateParam,
+  updateLocationParam,
+  updateAmountOfDaysParam,
+} from '../store/search_hotel_req_params';
+
 import '../styles/search_hotel.css';
 
 export function SearchHotel() {
   const dispatch = useDispatch();
-  const [location, setLocation] = useState('Москва');
-  const [checkInDate, setCheckInDate] = useState(dateFormattedForInput());
-  const [amountOfDays, setAmountOfDays] = useState('1');
-  async function findHotels() {
-    const checkOutDate = dateFormattedCheckOut(checkInDate, amountOfDays);
-    const url = `https://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${checkInDate}&checkOut=${checkOutDate}&limit=5`;
-    const response = await fetch(url);
-    const data = await response.json();
-    dispatch(updateHotelsList(data));
-  }
-  useEffect(() => {
-    findHotels();
-  }, []);
+  const { location, checkInDate, amountOfDays } = useSelector(
+    (store: RootState) => store.searchHotelReqParams
+  );
   return (
     <form
       className="filters"
       onSubmit={(event) => {
         event.preventDefault();
-        findHotels();
+        dispatch({
+          type: 'GET_HOTELS_DATA',
+          payload: { location, checkInDate, amountOfDays },
+        });
       }}
     >
       <div className="filters__section">
@@ -41,7 +34,9 @@ export function SearchHotel() {
           className="filters__section__input"
           id="location"
           required
-          onInput={(event) => setLocation(event.currentTarget.value)}
+          onInput={(event) =>
+            dispatch(updateLocationParam(event.currentTarget.value))
+          }
           value={location}
         />
       </div>
@@ -54,7 +49,9 @@ export function SearchHotel() {
           className="filters__section__input"
           id="date"
           required
-          onInput={(event) => setCheckInDate(event.currentTarget.value)}
+          onInput={(event) =>
+            dispatch(updateCheckInDateParam(event.currentTarget.value))
+          }
           value={checkInDate}
         />
       </div>
@@ -69,10 +66,10 @@ export function SearchHotel() {
           id="days"
           onChange={(event) => {
             if (Number(event.currentTarget.value) < 1) {
-              setAmountOfDays('');
+              dispatch(updateAmountOfDaysParam(''));
               return;
             }
-            setAmountOfDays(event.currentTarget.value);
+            dispatch(updateAmountOfDaysParam(event.currentTarget.value));
           }}
           value={amountOfDays}
         />

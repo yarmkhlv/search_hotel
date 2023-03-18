@@ -16,4 +16,18 @@ function dateFormattedCheckOut(checkIn: string, amount: string) {
   return departureDateString;
 }
 
-export { dateFormattedForInput, dateFormattedCheckOut };
+function transformDate(date: string) {
+  const dateString = date;
+  const dateObj = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  };
+  const formattedDate = dateObj
+    .toLocaleDateString('ru-RU', options)
+    .replace(/ г\./g, '');
+  return formattedDate;
+}
+
+export { dateFormattedForInput, dateFormattedCheckOut, transformDate };
