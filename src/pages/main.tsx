@@ -5,6 +5,7 @@ import { FavoriteCard } from '../components/favorite_card';
 import { HotelItemCard } from '../components/hotel_item_card';
 
 import { RootState } from '../store';
+import { transformDate } from '../helpers/date_now_formatted';
 import '../styles/main.css';
 import arrowRight from '../assets/arrow_right.svg';
 import { Hotel } from '../store/sagas';
@@ -17,6 +18,7 @@ export function Main() {
       priceAvg={hotel.priceAvg}
       checkInDate={hotel.checkInDate}
       amountOfDays={hotel.amountOfDays}
+      key={hotel.hotelId}
     />
   ));
   return (
@@ -51,9 +53,13 @@ export function Main() {
               <div className="hotels__header__arrow">
                 <img src={arrowRight} alt="arrow" />
               </div>
-              <div className="hotels__header__text">Москва</div>
+              <div className="hotels__header__text">
+                {hotelsList ? hotelsList[0]?.location.name : null}
+              </div>
             </div>
-            <div className="hotels__header__date">07 июля 2020</div>
+            <div className="hotels__header__date">
+              {hotelsList ? transformDate(hotelsList[0]?.checkInDate) : null}
+            </div>
           </div>
           <div className="hotels__carousel" />
           <div className="hotels__text">

@@ -24,7 +24,12 @@ interface GetHotelsPayload {
 export interface Hotel {
   hotelId: number;
   hotelName: string;
-  location: object;
+  location: {
+    state: boolean;
+    country: string;
+    name: string;
+    geo: object;
+  };
   locationId: number;
   priceAvg: number;
   priceFrom: number;

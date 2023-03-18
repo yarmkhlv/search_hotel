@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import { RootState } from '../store';
 import {
@@ -14,15 +15,21 @@ export function SearchHotel() {
   const { location, checkInDate, amountOfDays } = useSelector(
     (store: RootState) => store.searchHotelReqParams
   );
+  function bindGetHotelsData() {
+    dispatch({
+      type: 'GET_HOTELS_DATA',
+      payload: { location, checkInDate, amountOfDays },
+    });
+  }
+  useEffect(() => {
+    bindGetHotelsData();
+  }, []);
   return (
     <form
       className="filters"
       onSubmit={(event) => {
         event.preventDefault();
-        dispatch({
-          type: 'GET_HOTELS_DATA',
-          payload: { location, checkInDate, amountOfDays },
-        });
+        bindGetHotelsData();
       }}
     >
       <div className="filters__section">

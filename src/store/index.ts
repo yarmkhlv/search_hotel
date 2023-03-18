@@ -1,11 +1,13 @@
 import createSagaMiddleware from '@redux-saga/core';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import favorite_list_slice from './favorite_list_slice';
 import hotels_list_slice from './hotels_list_slice';
-import { rootSaga } from './sagas';
+import { Hotel, rootSaga } from './sagas';
 import search_hotel_req_params from './search_hotel_req_params';
 
 export interface RootState {
-  hotelsList: [];
+  hotelsList: Hotel[];
+  favoriteList: Hotel[];
   searchHotelReqParams: {
     location: string;
     checkInDate: string;
@@ -15,6 +17,7 @@ export interface RootState {
 
 const rootReducer = combineReducers({
   hotelsList: hotels_list_slice,
+  favoriteList: favorite_list_slice,
   searchHotelReqParams: search_hotel_req_params,
 });
 
