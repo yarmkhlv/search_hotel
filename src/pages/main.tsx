@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { SearchHotel } from '../components/search_hotel';
 import { FavoriteCard } from '../components/favorite_card';
 import { HotelItemCard } from '../components/hotel_item_card';
 
+import { updateIsLogged } from '../store/is_logged';
 import { RootState } from '../store';
 import { transformDate } from '../helpers/date_now_formatted';
 import { transformWordHotel } from '../helpers/transoform_word';
@@ -12,6 +14,8 @@ import arrowRight from '../assets/arrow_right.svg';
 import { Hotel } from '../store/sagas';
 
 export function Main() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { hotelsList, favoriteList } = useSelector((store: RootState) => store);
   const hotelsListRender = hotelsList.map((hotel: Hotel) => (
     <HotelItemCard hotel={hotel} key={hotel.hotelId} />
@@ -25,7 +29,15 @@ export function Main() {
       <div className="header">
         <div className="header__text">Simple Hotel Check</div>
         <div>
-          <button type="button">Выйти</button>
+          <button
+            onClick={() => {
+              dispatch(updateIsLogged(false));
+              navigate('/login');
+            }}
+            type="button"
+          >
+            Выйти
+          </button>
         </div>
       </div>
       <div className="content">

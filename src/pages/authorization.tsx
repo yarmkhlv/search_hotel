@@ -1,25 +1,39 @@
 import { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { validateLogin, validatePass } from '../helpers/validates';
+import { updateIsLogged } from '../store/is_logged';
 
 import '../styles/authorization.css';
 
 export function Authorization() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const fromPage = location.state?.from?.pathname || '/';
   const [inputLogin, setInputLogin] = useState('');
   const [inputPass, setInputPass] = useState('');
   const [validErrLogin, setValidErrLogin] = useState(false);
   const [validErrPass, setValidErrPass] = useState(false);
-
   function validateForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    let login;
+    let pass;
     if (validateLogin(inputLogin)) {
       setValidErrLogin(true);
     } else {
       setValidErrLogin(false);
+      login = true;
     }
     if (validatePass(inputPass)) {
       setValidErrPass(true);
     } else {
       setValidErrPass(false);
+      pass = true;
+    }
+    if (login && pass) {
+      dispatch(updateIsLogged(true));
+      navigate(fromPage, { replace: true });
     }
   }
 
