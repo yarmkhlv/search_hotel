@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 
+import { StarsRating } from '../elements/starsRating';
+
 import { deleteFromFavoriteList } from '../store/favorite_list_slice';
 import { changeEndingOfDay } from '../helpers/transoform_word';
 import { transformDate } from '../helpers/date_now_formatted';
@@ -35,7 +37,9 @@ export function FavoriteCard(props: { hotel: Hotel }) {
         </span>
       </div>
       <div className="favorites__list__item__row-3">
-        <div className="row-3_rating">{stars}</div>
+        <div className="row-3_rating">
+          <StarsRating amount={stars} />
+        </div>
         <div className="row-3__price">
           <span className="row-3__price_text">Price:</span>
           <span className="row-3__price_value">{Math.round(priceAvg)} ₽</span>

@@ -7,16 +7,17 @@ import {
   addToFavoriteList,
   deleteFromFavoriteList,
 } from '../store/favorite_list_slice';
+import { StarsRating } from '../elements/starsRating';
 import { Heart } from '../elements/heart';
 
 import '../styles/hotel_item_card.css';
-import { coloredStar, star } from '../helpers/svg';
 import { Hotel } from '../store/sagas';
 
 export function HotelItemCard(props: { hotel: Hotel }) {
   const dispatch = useDispatch();
   const { hotel } = props;
-  const { hotelName, priceAvg, checkInDate, amountOfDays, hotelId } = hotel;
+  const { hotelName, priceAvg, checkInDate, amountOfDays, hotelId, stars } =
+    hotel;
   const { favoriteList } = useSelector((store: RootState) => store);
   const favorite = favoriteList.some((elem) => elem.hotelId === hotelId);
   return (
@@ -47,7 +48,9 @@ export function HotelItemCard(props: { hotel: Hotel }) {
             </span>
           </div>
           <div className="hotel__list__item__row-3">
-            <div className="hotel__row-3_rating">{[star, coloredStar]}</div>
+            <div className="hotel__row-3_rating">
+              <StarsRating amount={stars} />
+            </div>
             <div className="hotel__row-3__price">
               <span className="hotel__row-3__price_text">Price:</span>
               <span className="hotel__row-3__price_value">

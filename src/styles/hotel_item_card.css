@@ -23,10 +23,12 @@
 .hotel__list__item__row-1 {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 4px;
   padding-right: 24px;
 }
 .hotel__row-1__text {
+  width: 400px;
   font-weight: 300;
   font-size: 17px;
   line-height: 22px;

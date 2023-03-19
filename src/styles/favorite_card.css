@@ -9,6 +9,7 @@
 .favorites__list__item__row-1 {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 4px;
   padding-top: 16px;
 }
