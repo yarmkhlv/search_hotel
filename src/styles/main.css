@@ -30,7 +30,7 @@
 
 .favorites {
   grid-area: favorites;
-  padding: 32px;
+  padding: 32px 16px 32px 32px;
 
   background-color: #fff;
   box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
@@ -38,6 +38,8 @@
 }
 .favorites__list {
   max-height: 288px;
+  overflow: scroll;
+  padding-right: 16px;
 }
 .favorites__text {
   font-weight: 500;
@@ -46,7 +48,7 @@
   margin-bottom: 32px;
 }
 .favorites__selects {
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 .favorites__selects__item {
   width: 89px;

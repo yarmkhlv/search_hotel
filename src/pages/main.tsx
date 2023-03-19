@@ -6,21 +6,20 @@ import { HotelItemCard } from '../components/hotel_item_card';
 
 import { RootState } from '../store';
 import { transformDate } from '../helpers/date_now_formatted';
+import { transformWordHotel } from '../helpers/transoform_word';
 import '../styles/main.css';
 import arrowRight from '../assets/arrow_right.svg';
 import { Hotel } from '../store/sagas';
 
 export function Main() {
-  const { hotelsList } = useSelector((store: RootState) => store);
+  const { hotelsList, favoriteList } = useSelector((store: RootState) => store);
   const hotelsListRender = hotelsList.map((hotel: Hotel) => (
-    <HotelItemCard
-      name={hotel.hotelName}
-      priceAvg={hotel.priceAvg}
-      checkInDate={hotel.checkInDate}
-      amountOfDays={hotel.amountOfDays}
-      key={hotel.hotelId}
-    />
+    <HotelItemCard hotel={hotel} key={hotel.hotelId} />
   ));
+  const favoriteListRender = favoriteList.map((hotel: Hotel) => (
+    <FavoriteCard hotel={hotel} key={hotel.hotelId} />
+  ));
+  const numbersOfHotels = favoriteList.length;
   return (
     <div className="main">
       <div className="header">
@@ -42,9 +41,7 @@ export function Main() {
               <option>Рейтинг по убыванию</option>
             </select>
           </div>
-          <div className="favorites__list">
-            <FavoriteCard />
-          </div>
+          <div className="favorites__list">{favoriteListRender}</div>
         </div>
         <div className="hotels">
           <div className="hotels__header">
@@ -63,7 +60,8 @@ export function Main() {
           </div>
           <div className="hotels__carousel" />
           <div className="hotels__text">
-            Добавлено в Избранное: <span>3</span> отеля
+            Добавлено в Избранное: <span>{numbersOfHotels}</span>{' '}
+            {transformWordHotel(numbersOfHotels)}
           </div>
           <div className="hotels__list">{hotelsListRender}</div>
         </div>
