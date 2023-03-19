@@ -23,7 +23,7 @@
 
   display: grid;
   grid-template-columns: 360px 1fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: 410px auto;
   column-gap: 24px;
   grid-template-areas: 'filters hotels' 'favorites hotels';
 }
@@ -48,6 +48,8 @@
   margin-bottom: 32px;
 }
 .favorites__selects {
+  display: flex;
+  column-gap: 8px;
   margin-bottom: 16px;
 }
 .favorites__selects__item {
@@ -112,4 +114,34 @@
 
 .star {
   margin-right: 3px;
+}
+
+.favorites__selects__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12.5px 4px 8px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+.favorites__selects__text {
+  margin-right: 9px;
+
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.408px;
+  color: #99a0a3;
+}
+.favorites__selects__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sel-active-text {
+  color: #41522e;
+}
+
+.sel-active-btn {
+  border-color: #41522e;
 }

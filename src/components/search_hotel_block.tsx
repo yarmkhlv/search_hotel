@@ -10,7 +10,7 @@ import {
 
 import '../styles/search_hotel.css';
 
-export function SearchHotel() {
+export function SearchHotelBlock() {
   const dispatch = useDispatch();
   const { location, checkInDate, amountOfDays } = useSelector(
     (store: RootState) => store.searchHotelReqParams
