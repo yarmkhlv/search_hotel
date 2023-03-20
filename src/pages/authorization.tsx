@@ -10,7 +10,7 @@ export function Authorization() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const fromPage = location.state?.from?.pathname || '/';
+  const fromPage = location.state?.from?.pathname || '/main';
   const [inputLogin, setInputLogin] = useState('');
   const [inputPass, setInputPass] = useState('');
   const [validErrLogin, setValidErrLogin] = useState(false);

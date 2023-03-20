@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-export function TopSelect(props: { active: boolean }) {
-  const { active } = props;
-  const colored = active ? '#41522E' : '#878787';
+export function TopSelect(props: { thisBtnActive: boolean; sort: string }) {
+  const { thisBtnActive, sort } = props;
+  const colored = thisBtnActive && sort === 'increase' ? '#41522E' : '#878787';
   return (
     <svg
       width="9"

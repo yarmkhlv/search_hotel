@@ -19,7 +19,12 @@ export function HotelItemCard(props: { hotel: Hotel }) {
   const { hotelName, priceAvg, checkInDate, amountOfDays, hotelId, stars } =
     hotel;
   const { favoriteList } = useSelector((store: RootState) => store);
-  const favorite = favoriteList.some((elem) => elem.hotelId === hotelId);
+  const favorite = favoriteList.some(
+    (elem) =>
+      elem.hotelId === hotelId &&
+      elem.checkInDate === checkInDate &&
+      elem.amountOfDays === amountOfDays
+  );
   return (
     <div className="hotels__list__item">
       <div className="hotel-card-wrapper">
@@ -30,7 +35,13 @@ export function HotelItemCard(props: { hotel: Hotel }) {
             <button
               onClick={() => {
                 if (favorite) {
-                  dispatch(deleteFromFavoriteList(hotelId));
+                  dispatch(
+                    deleteFromFavoriteList({
+                      hotelId,
+                      checkInDate,
+                      amountOfDays,
+                    })
+                  );
                 } else dispatch(addToFavoriteList(hotel));
               }}
               type="button"

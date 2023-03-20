@@ -2,12 +2,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { SearchHotelBlock } from '../components/search_hotel_block';
+import { FavoritesBlock } from '../components/favorites_block';
+import { HotelsBlock } from '../components/hotels_block';
 
 import { updateIsLogged } from '../store/is_logged';
 
 import '../styles/main.css';
-import { FavoritesBlock } from '../components/favorites_block';
-import { HotelsBlock } from '../components/hotels_block';
+import { logOut } from '../helpers/svg';
 
 export function Main() {
   const dispatch = useDispatch();
@@ -22,9 +23,11 @@ export function Main() {
               dispatch(updateIsLogged(false));
               navigate('/login');
             }}
+            className="header__logout-btn"
             type="button"
           >
             Выйти
+            {logOut}
           </button>
         </div>
       </div>

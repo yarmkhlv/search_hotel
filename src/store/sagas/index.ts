@@ -37,6 +37,7 @@ export interface Hotel {
   stars: number;
   checkInDate: string;
   amountOfDays: string;
+  uniqueKey: number;
 }
 
 export function* workerSaga(action: {

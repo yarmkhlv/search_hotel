@@ -145,3 +145,9 @@
 .sel-active-btn {
   border-color: #41522e;
 }
+
+.header__logout-btn {
+  display: flex;
+  align-items: flex;
+  column-gap: 15px;
+}

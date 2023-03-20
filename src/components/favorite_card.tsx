@@ -22,7 +22,9 @@ export function FavoriteCard(props: { hotel: Hotel }) {
         <button
           className="favorites__btn"
           onClick={() => {
-            dispatch(deleteFromFavoriteList(hotelId));
+            dispatch(
+              deleteFromFavoriteList({ hotelId, checkInDate, amountOfDays })
+            );
           }}
           type="button"
         >
