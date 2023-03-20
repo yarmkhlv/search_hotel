@@ -1,9 +1,11 @@
 export function Heart(props: { favorite: boolean }) {
   const { favorite } = props;
+  const hover = favorite ? null : 'svg-heart';
   const colored = favorite ? '#E55858' : 'white';
   const stroked = favorite ? 'none' : '#C4C4C4';
   return (
     <svg
+      className={`${hover}`}
       width="23"
       height="20"
       viewBox="0 0 23 20"

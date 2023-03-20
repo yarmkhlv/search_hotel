@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = true;
+function getLocalIsLogged() {
+  const isLogged = localStorage.getItem('auth');
+  if (isLogged) {
+    return JSON.parse(isLogged);
+  }
+  return false;
+}
 
 const isLogged = createSlice({
   name: 'isLogged',
-  initialState,
+  initialState: getLocalIsLogged(),
   reducers: {
     updateIsLogged(state, action: { type: string; payload: boolean }) {
       return action.payload;

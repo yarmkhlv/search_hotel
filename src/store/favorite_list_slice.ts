@@ -2,9 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import { generateUniqueKey } from '../helpers/generate_unique_key';
 import { Hotel } from './sagas';
 
+function getLocalFavList() {
+  const keyStringify = localStorage.getItem('favoriteList');
+  if (keyStringify) {
+    return JSON.parse(keyStringify);
+  }
+  return [];
+}
+
 const favoriteList = createSlice({
   name: 'favoriteList',
-  initialState: [] as Array<Hotel>,
+  initialState: getLocalFavList() as Array<Hotel>,
   reducers: {
     addToFavoriteList(state, action: { type: string; payload: Hotel }) {
       state.push({ ...action.payload, uniqueKey: generateUniqueKey(state) });
@@ -26,9 +34,16 @@ const favoriteList = createSlice({
     sortFavoriteList(state, action: { type: string; payload: Hotel[] }) {
       return [...action.payload];
     },
+    clearFavoriteList(state) {
+      return [];
+    },
   },
 });
 
 export default favoriteList.reducer;
-export const { addToFavoriteList, deleteFromFavoriteList, sortFavoriteList } =
-  favoriteList.actions;
+export const {
+  addToFavoriteList,
+  deleteFromFavoriteList,
+  sortFavoriteList,
+  clearFavoriteList,
+} = favoriteList.actions;

@@ -1,7 +1,8 @@
-import { FormEvent, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { FormEvent, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { validateLogin, validatePass } from '../helpers/validates';
+import { RootState } from '../store';
 import { updateIsLogged } from '../store/is_logged';
 
 import '../styles/authorization.css';
@@ -10,7 +11,17 @@ export function Authorization() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { isLogged } = useSelector((store: RootState) => store);
+
   const fromPage = location.state?.from?.pathname || '/main';
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate(fromPage);
+    }
+  }, []);
+
   const [inputLogin, setInputLogin] = useState('');
   const [inputPass, setInputPass] = useState('');
   const [validErrLogin, setValidErrLogin] = useState(false);
@@ -33,6 +44,7 @@ export function Authorization() {
     }
     if (login && pass) {
       dispatch(updateIsLogged(true));
+      localStorage.setItem('auth', 'true');
       navigate(fromPage, { replace: true });
     }
   }
