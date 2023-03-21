@@ -14,7 +14,7 @@ export function Authorization() {
 
   const { isLogged } = useSelector((store: RootState) => store);
 
-  const fromPage = location.state?.from?.pathname || '/main';
+  const fromPage = location.state?.from?.pathname || '/';
 
   useEffect(() => {
     if (isLogged) {

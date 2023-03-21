@@ -54,7 +54,6 @@ const hotelsList = createSlice({
       };
     },
     updateHotelsListLoading(state) {
-      console.log(state);
       return { ...state, error: { mode: false, text: '' }, loading: true };
     },
   },

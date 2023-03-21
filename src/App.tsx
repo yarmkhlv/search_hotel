@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route
           index
-          path="/main"
+          path="/"
           element={
             <ProtectedRoutes>
               <Main />
