@@ -9,6 +9,7 @@ import { Hotel } from '../store/hotels_list_slice';
 
 import '../styles/favorite_card.css';
 import { coloredHeart } from '../helpers/svg';
+import { formatNumberWithSpaces } from '../helpers/format_number_with_spaces';
 
 export function FavoriteCard(props: { hotel: Hotel }) {
   const dispatch = useDispatch();
@@ -44,7 +45,9 @@ export function FavoriteCard(props: { hotel: Hotel }) {
         </div>
         <div className="row-3__price">
           <span className="row-3__price_text">Price:</span>
-          <span className="row-3__price_value">{Math.round(priceAvg)} ₽</span>
+          <span className="row-3__price_value">
+            {formatNumberWithSpaces(Math.round(priceAvg))} ₽
+          </span>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { transformDate } from '../helpers/date_now_formatted';
+import { formatNumberWithSpaces } from '../helpers/format_number_with_spaces';
 import { changeEndingOfDay } from '../helpers/transoform_word';
 import { RootState } from '../store';
 import {
@@ -65,7 +66,7 @@ export function HotelItemCard(props: { hotel: Hotel }) {
             <div className="hotel__row-3__price">
               <span className="hotel__row-3__price_text">Price:</span>
               <span className="hotel__row-3__price_value">
-                {Math.round(priceAvg)} ₽
+                {formatNumberWithSpaces(Math.round(priceAvg))} ₽
               </span>
             </div>
           </div>
