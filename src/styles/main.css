@@ -23,7 +23,7 @@
 
   display: grid;
   grid-template-columns: 360px 1fr;
-  grid-template-rows: 410px auto;
+  grid-template-rows: 410px 472px;
   column-gap: 24px;
   grid-template-areas: 'filters hotels' 'favorites hotels';
 }
@@ -38,7 +38,7 @@
 }
 .favorites__list {
   max-height: 288px;
-  overflow: scroll;
+  overflow-y: scroll;
   padding-right: 16px;
 }
 .favorites__text {
@@ -88,8 +88,13 @@
   font-weight: 400;
 }
 
-.hotels__carousel {
+.hotels__slider {
   margin-bottom: 28px;
+  height: 149px;
+  width: 600px;
+}
+.slider-item {
+  border-radius: 10px;
 }
 
 .hotels__text {
@@ -109,7 +114,20 @@
   max-height: 529px;
   width: 600px;
   padding-right: 14px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.hotels__list::-webkit-scrollbar,
+.favorites__list::-webkit-scrollbar {
+  width: 2px;
+}
+.hotels__list::-webkit-scrollbar-track,
+.favorites__list::-webkit-scrollbar-track {
+  background: #e7e7e7;
+}
+.hotels__list::-webkit-scrollbar-thumb,
+.favorites__list::-webkit-scrollbar-thumb {
+  border: 2px solid #41522e;
 }
 
 .star {
@@ -154,4 +172,8 @@
 
 .svg-heart:hover path {
   fill: #ebebeb;
+}
+
+.slick-track {
+  margin-left: -80px;
 }

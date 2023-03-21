@@ -11,7 +11,7 @@ import { StarsRating } from '../elements/starsRating';
 import { Heart } from '../elements/heart';
 
 import '../styles/hotel_item_card.css';
-import { Hotel } from '../store/sagas';
+import { Hotel } from '../store/hotels_list_slice';
 
 export function HotelItemCard(props: { hotel: Hotel }) {
   const dispatch = useDispatch();

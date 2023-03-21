@@ -5,7 +5,7 @@ import { StarsRating } from '../elements/starsRating';
 import { deleteFromFavoriteList } from '../store/favorite_list_slice';
 import { changeEndingOfDay } from '../helpers/transoform_word';
 import { transformDate } from '../helpers/date_now_formatted';
-import { Hotel } from '../store/sagas';
+import { Hotel } from '../store/hotels_list_slice';
 
 import '../styles/favorite_card.css';
 import { coloredHeart } from '../helpers/svg';

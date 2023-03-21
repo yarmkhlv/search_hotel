@@ -9,7 +9,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.16",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "react": "^18.2.0",
@@ -17,8 +16,11 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "redux": "^4.2.1",
-    "redux-saga": "^1.2.3"
+    "redux-saga": "^1.2.3",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^9.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,6 +47,8 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^18.15.4",
+    "@types/react-slick": "^0.23.10",
     "eslint": "^8.36.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",

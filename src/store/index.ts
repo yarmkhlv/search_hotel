@@ -1,14 +1,19 @@
 import createSagaMiddleware from '@redux-saga/core';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import favorite_list_slice from './favorite_list_slice';
-import hotels_list_slice from './hotels_list_slice';
+import hotels_list_slice, { Hotel } from './hotels_list_slice';
+
 import is_logged from './is_logged';
-import { Hotel, rootSaga } from './sagas';
+import { rootSaga } from './sagas';
 import search_hotel_req_params from './search_hotel_req_params';
 
 export interface RootState {
   isLogged: boolean;
-  hotelsList: Hotel[];
+  hotelsList: {
+    list: Hotel[];
+    error: { mode: boolean; text: string };
+    loading: boolean;
+  };
   favoriteList: Hotel[];
   searchHotelReqParams: {
     location: string;

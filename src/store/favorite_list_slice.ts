@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { generateUniqueKey } from '../helpers/generate_unique_key';
-import { Hotel } from './sagas';
+import { Hotel } from './hotels_list_slice';
 
 function getLocalFavList() {
   const keyStringify = localStorage.getItem('favoriteList');

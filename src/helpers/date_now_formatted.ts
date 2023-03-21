@@ -30,4 +30,17 @@ function transformDate(date: string) {
   return formattedDate;
 }
 
-export { dateFormattedForInput, dateFormattedCheckOut, transformDate };
+function dateNowForInputDate() {
+  const dateObj = new Date();
+  const year = dateObj.getFullYear();
+  const month = `0${dateObj.getMonth() + 1}`.slice(-2);
+  const day = `0${dateObj.getDate()}`.slice(-2);
+  return `${year}-${month}-${day}`;
+}
+
+export {
+  dateFormattedForInput,
+  dateFormattedCheckOut,
+  transformDate,
+  dateNowForInputDate,
+};

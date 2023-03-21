@@ -1,4 +1,4 @@
-import { Hotel } from '../store/sagas';
+import { Hotel } from '../store/hotels_list_slice';
 
 export function doSorting(arr: Hotel[], sortById: number, sortByTrend: string) {
   let sorted = [...arr];

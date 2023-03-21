@@ -5,13 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CustomSelect } from '../elements/custom_select';
 import { FavoriteCard } from './favorite_card';
 
-import {
-  addToFavoriteList,
-  sortFavoriteList,
-} from '../store/favorite_list_slice';
+import { sortFavoriteList } from '../store/favorite_list_slice';
 import { doSorting } from '../helpers/do_sorting';
 import { RootState } from '../store';
-import { Hotel } from '../store/sagas';
+import { Hotel } from '../store/hotels_list_slice';
 
 export function FavoritesBlock() {
   const dispatch = useDispatch();
@@ -34,7 +31,7 @@ export function FavoritesBlock() {
       );
       dispatch(sortFavoriteList(sortedList));
     }
-  }, [statusActive, addToFavoriteList]);
+  }, [statusActive, favoriteList.length]);
 
   return (
     <div className="favorites">

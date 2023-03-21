@@ -1,7 +1,13 @@
-// eslint-disable-next-line require-yield
 import { takeLeading, put, call } from '@redux-saga/core/effects';
-import { updateHotelsList } from '../hotels_list_slice';
+import {
+  updateHotelsList,
+  updateHotelsListError,
+  updateHotelsListLoading,
+  Hotel,
+} from '../hotels_list_slice';
 import { dateFormattedCheckOut } from '../../helpers/date_now_formatted';
+
+const valueForReq = 20;
 
 async function getHotels(
   location: string,
@@ -9,7 +15,7 @@ async function getHotels(
   amountOfDays: string
 ) {
   const checkOutDate = dateFormattedCheckOut(checkInDate, amountOfDays);
-  const url = `https://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${checkInDate}&checkOut=${checkOutDate}&limit=10`;
+  const url = `https://engine.hotellook.com/api/v2/cache.json?location=${location}&currency=rub&checkIn=${checkInDate}&checkOut=${checkOutDate}&limit=${valueForReq}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
@@ -21,37 +27,29 @@ interface GetHotelsPayload {
   amountOfDays: string;
 }
 
-export interface Hotel {
-  hotelId: number;
-  hotelName: string;
-  location: {
-    state: boolean;
-    country: string;
-    name: string;
-    geo: object;
-  };
-  locationId: number;
-  priceAvg: number;
-  priceFrom: number;
-  pricePercentile: object;
-  stars: number;
-  checkInDate: string;
-  amountOfDays: string;
-  uniqueKey: number;
-}
-
 export function* workerSaga(action: {
   type: string;
   payload: GetHotelsPayload;
 }): Generator<any, void, any> {
+  yield put(updateHotelsListLoading());
   const { location, checkInDate, amountOfDays } = action.payload;
-  const data = yield call(getHotels, location, checkInDate, amountOfDays);
-  const modifedData = yield data.map((hotel: Hotel) => ({
-    ...hotel,
-    checkInDate,
-    amountOfDays,
-  }));
-  yield put(updateHotelsList(modifedData));
+  try {
+    const data = yield call(getHotels, location, checkInDate, amountOfDays);
+    const modifedData = yield data.map((hotel: Hotel) => ({
+      ...hotel,
+      checkInDate,
+      amountOfDays,
+    }));
+    yield put(
+      updateHotelsList({
+        list: modifedData,
+        loading: false,
+        error: { mode: false },
+      })
+    );
+  } catch (error: any) {
+    yield put(updateHotelsListError(error.message));
+  }
 }
 
 export function* watcherSaga() {

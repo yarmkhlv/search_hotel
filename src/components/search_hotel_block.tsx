@@ -9,6 +9,7 @@ import {
 } from '../store/search_hotel_req_params';
 
 import '../styles/search_hotel.css';
+import { dateNowForInputDate } from '../helpers/date_now_formatted';
 
 export function SearchHotelBlock() {
   const dispatch = useDispatch();
@@ -59,6 +60,7 @@ export function SearchHotelBlock() {
           onInput={(event) =>
             dispatch(updateCheckInDateParam(event.currentTarget.value))
           }
+          min={dateNowForInputDate()}
           value={checkInDate}
         />
       </div>
